@@ -1,0 +1,162 @@
+  /* Styles for the button container */
+       /* Styles for the button container */
+       .button-group {
+        position: relative;
+        display: inline-block;
+        font-size: 1.125rem; /* text-lg */
+        font-weight: 600; /* font-semibold */
+        color: #dc2626; /* text-red-600 */
+        text-decoration: none;
+        outline: none;
+        ring: none;
+    }
+    
+    /* Styles for the border behind the button */
+    .button-border {
+        position: absolute;
+        inset: 0;
+        border: 1px solid #e90000; /* border-red-600 */
+        border-radius: 0.5rem; /* rounded-lg */
+    }
+    
+    /* Styles for the button itself */
+    .button-text {
+        display: block;
+        border: 1px solid #d51c1c; /* border-red-600 */
+        background-color: #ffffff; /* bg-white */
+        width: 412px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        border-radius: 0.5rem; /* rounded-lg */
+        color: #dc2626; /* text-red-600 */
+    }
+    
+    /* Hover effects */
+    .button-group:hover .button-text {
+        background-color: #f7c6c6; /* Lighter red */
+        color: #d32f2f; /* Darker red text */
+        transform: translate(-0.5rem, -0.5rem); /* Move button slightly */
+    }
+    
+    /* Active effects */
+    .button-group:active .button-text {
+        border-color: #ef4444; /* Active border color */
+        background-color: #d32f2f; /* Darker red background */
+        color: #fff; /* White text */
+    }
+    
+    
+            header {
+                background-color: #fff;
+                padding: 20px 0;
+                color: #333;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid #ddd;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 10;
+            }
+    
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding: 0 20px; /* Add padding to align the login button */
+            }
+    
+            .logo-container {
+                display: flex;
+                align-items: center;
+                text-align: center;
+            }
+    
+            .logo {
+                width: 50px;
+                height: 70px;
+                margin-right: 10px;
+            }
+    
+            .logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    
+            .website-title {
+                font-family: 'Roboto', sans-serif;
+                font-size: 3rem;
+                font-weight: bold;
+                color: #1a1a1a;
+                margin-left: 15px;
+                text-decoration: none; /* Remove underline from the link */
+            }
+    
+            .website-title:hover {
+                text-decoration:none; /* Add underline on hover */
+            }
+    
+            /* Login button style */
+            .login-button-container {
+        position: absolute; /* Align to the right */
+        right: 20px; /* Space from the right edge */
+    }
+    
+    .login-btn {
+        @apply shrink-0 rounded-lg p-2 text-sm font-medium text-gray-500 bg-white border border-gray-200 shadow-sm hover:bg-gray-50 hover:text-gray-700;
+        background-color: #d32f2f; /* Red background */
+        color: #fff; /* White text */
+        padding: 12px 24px; /* Larger button size */
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 8px;
+        font-size: 1.125rem; /* Adjust font size */
+        transition: background-color 0.3s ease;
+    }
+    
+    .login-btn:hover {
+        background-color: #b71c1c; /* Darker red on hover */
+    }
+    .account-heading {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem; /* Adjust font size as needed */
+        font-weight: bold;
+        color: #d32f2f; /* Match theme color */
+        margin-bottom: 40px; /* Space below the heading */
+        text-align: center;
+    }
+    
+    
+    
+            body {
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                padding-top: 100px; /* Adjust this value based on header height */
+            }
+    
+            main {
+                flex: 1;
+            }
+    
+            footer {
+                background-color: #fff;
+                padding: 20px 0;
+                color: #333;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-top: 1px solid #ddd;
+            }
+    
+            .footer-text {
+                color: #d32f2f;
+            }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="acstyles.css">
+</head>
+<body class="bg-gray-100">
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="Logo.png" alt="Task Flow Logo">
+                </div>
+                <a href="index.html" class="website-title">Task Flow</a>
+            </div>
+            <div class="login-button-container">
+                <a href="login.html" class="login-btn bg-red-100 text-red-600 rounded-lg px-7 py-4 text-sm font-medium hover:bg-red-200 hover:text-red-700 mr-3">Login</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="flex flex-col items-center justify-center">
+        <h1 class="account-heading">Choose Your Account Type</h1>
+        <div class="space-y-32"> <!-- Increased gap between buttons to 'space-y-32' for much wider spacing -->
+            <!-- Base Button -->
+            <a
+                class="group relative inline-block text-lg font-semibold text-white focus:outline-none focus:ring"
+                href="signupalternate.html"
+            >
+                <span class="absolute inset-0 border border-red-600 group-active:border-red-500 rounded-lg"></span>
+                <span
+                    class="block border border-red-600 bg-red-600 w-[412px] h-[400px] flex items-center justify-center transition-transform active:border-red-500 active:bg-red-500 group-hover:-translate-x-2 group-hover:-translate-y-2 rounded-lg"
+                >
+                    Individual Sign Up
+                </span>
+            </a>
+    
+            <!-- Border Button -->
+            <a
+                class="button-group"
+                href="#"
+            >
+                <span class="button-border"></span>
+                <span class="button-text">
+                    Team Leader Signup
+                </span>
+            </a>
+    
+            <a
+                class="button-group"
+                href="#"
+            >
+                <span class="button-border"></span>
+                <span class="button-text">
+                    Team Member Signup
+                </span>
+            </a>
+        </div>
+    </main>
+    
+
+    <footer>
+        <div class="footer-text">
+            &copy; 2024 Task Flow. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
