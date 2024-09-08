@@ -48,20 +48,20 @@ function validateForm() {
     }
 
     // Validate password
-    // const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,8}$/;
-    // if (!password) {
-    //     document.getElementById('passwordError').innerHTML = 'Password is required.';
-    //     isValid = false;
-    // } else if (!passwordPattern.test(password)) {
-    //     document.getElementById('passwordError').innerHTML = 'Password must be 6-8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a special character.';
-    //     isValid = false;
-    // }
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,8}$/;
+    if (!password) {
+        document.getElementById('passwordError').innerHTML = 'Password is required.';
+       isValid = false;
+    } else if (!passwordPattern.test(password)) {
+        document.getElementById('passwordError').innerHTML = 'Password must be 6-8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a special character.';
+        isValid = false;
+ }
 
-    // Validate confirm password
-    // if (confirmPassword !== password) {
-    //     document.getElementById('confirmPasswordError').innerHTML = 'Passwords do not match.';
-    //     isValid = false;
-    // }
+     //Validate confirm password
+     if (confirmPassword !== password) {
+         document.getElementById('confirmPasswordError').innerHTML = 'Passwords do not match.';
+        isValid = false;
+     }
 
     // If the form is valid, show the success message
     if (isValid) {

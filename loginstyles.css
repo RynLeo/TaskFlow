@@ -84,5 +84,14 @@ footer {
     z-index: 10;
 }
 
+/* Input field styling */
+input[type="email"] {
+    padding-left: 1rem; /* Adds space from the left edge of the input field */
+    box-sizing: border-box; /* Ensures padding is included in the total width and height */
+}
 
-
+/* Additional specific styling for password input */
+input[type="password"] {
+    padding-left: 1rem; /* Ensures padding is applied to password field */
+    box-sizing: border-box;
+}

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    <style>
+        /* Basic layout styling */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff0000, #ffffff); /* Red-to-white gradient */
+            color: #333;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+        }
+
+        .logo {
+            width: 50px;
+            height: 70px;
+            margin-right: 10px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .website-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .website-title:hover {
+            text-decoration: none;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px; /* Adjust this based on header height */
+            padding-bottom: 50px; /* Ensure space for footer */
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for main content */
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #d32f2f; /* Match the footer color */
+        }
+
+        #taskInput {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px; /* Space between the input and button */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: #d32f2f; /* Match the footer color */
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b71c1c; /* Darker red for hover */
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #d32f2f, #a62a2a); /* Dark red gradient */
+            color: #f0f0f0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            animation: fadeIn 0.5s ease-out; /* Apply animation */
+        }
+
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .task i {
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+
+        .task.completed {
+            color: yellow;
+        }
+
+        #clearBtn {
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 20px 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-text {
+            color: #d32f2f;
+        }
+
+        /* Welcome message styling */
+        .welcome-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome-message {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtext {
+            font-family: Arial, sans-serif;
+            font-size: 1.2rem;
+            color: #333;
+            font-style: italic;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Custom styling for the Save changes button */
+/* Custom styling for the Save changes button */
+/* Custom styling for the Save changes button */
+.btn-save-changes {
+    background: #ff0000; /* Solid red color */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-save-changes:hover {
+    background: #d32f2f; /* Slightly darker red for hover */
+    color: #ffffff; /* Keep text color white */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for highlight effect */
+}
+
+.addtask{
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+.loginbtn{
+ 
+    background-color: #fee2e2; /* Equivalent to bg-red-100 */
+    color: #dc2626;           /* Equivalent to text-red-600 */
+    border-radius: 0.5rem;    /* Equivalent to rounded-lg */
+    padding: 1rem 1.75rem;    /* Equivalent to px-7 py-4 */
+    font-size: 0.875rem;      /* Equivalent to text-sm */
+    font-weight: 500;         /* Equivalent to font-medium */
+    margin-right: 0.75rem;    /* Equivalent to mr-3 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* For smooth hover effect */
+}
+.loginbtn:hover {
+    background-color: #fecaca; /* Equivalent to hover:bg-red-200 */
+    color: #b91c1c;            /* Equivalent to hover:text-red-700 */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="taskflowlogo.png" alt="Task Flow Logo">
+                </div>
+                <a href="index.html" class="website-title">Task Flow</a>
+            </div>
+            <a 
+            href="index.html" 
+            class="loginbtn"
+          >
+            Logout
+          </a> 
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Welcome Message -->
+            <div class="welcome-container">
+                <h1 class="welcome-message">Welcome, <span id="username">Guest</span>!</h1>
+                <p class="welcome-subtext">Let's get through today's tasks</p>
+            </div>
+
+            <!-- Task Section -->
+            <h1>MY TASK</h1>
+            <input id="taskInput" placeholder="New Task" aria-label="New Task">
+            <button class="addtask" onclick="addTask()">Add Task</button>
+            <ul id="taskList" style="list-style-type: none; padding: 0;"></ul>
+            <button id="clearBtn" onclick="clearTasks()">Clear All</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-text">
+            &copy; 2024 Task Flow. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchUsername();
+            loadTasks();
+        });
+
+        function fetchUsername() {
+    const email = 'user@example.com'; // Replace with actual email from login session or form
+    fetch(`get_username.php?email=${encodeURIComponent(email)}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('username').textContent = data.username;
+        })
+        .catch(error => console.error('Error fetching username:', error));
+}
+
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            if (!input.value.trim()) return;
+
+            const li = document.createElement('li');
+            li.className = 'task';
+            li.innerHTML = `
+                <input type="checkbox" aria-label="Task completion">
+                <span class="task-text">${input.value}</span>
+                <div class="task-actions">
+                    <i class="bi bi-pencil" onclick="editTask(this)" aria-label="Edit Task"></i>
+                    <i class="bi bi-trash" onclick="removeTask(this)" aria-label="Remove Task"></i>
+                    <i class="bi bi-check-circle" onclick="completeTask(this)" aria-label="Complete Task"></i>
+                </div>
+            `;
+            document.getElementById('taskList').appendChild(li);
+            input.value = '';
+
+            saveTasks();
+        }
+
+        function completeTask(icon) {
+            const checkbox = icon.parentElement.parentElement.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            icon.className = checkbox.checked ? 'bi bi-x-circle' : 'bi bi-check-circle';
+            icon.parentElement.parentElement.classList.toggle('completed', checkbox.checked);
+
+            saveTasks();
+        }
+
+        function removeTask(icon) {
+            icon.parentElement.parentElement.remove();
+            saveTasks();
+        }
+
+        let currentTaskElement = null; // Global variable to store the current task element
+
+function editTask(icon) {
+    currentTaskElement = icon.parentElement.parentElement;
+    const taskText = currentTaskElement.querySelector('.task-text').textContent;
+    const modal = new bootstrap.Modal(document.getElementById('editTaskModal'));
+    document.getElementById('editTaskInput').value = taskText;
+    modal.show();
+}
+
+
+        function clearTasks() {
+            document.getElementById('taskList').innerHTML = '';
+            saveTasks();
+        }
+
+        function saveTask() {
+    if (currentTaskElement) {
+        const newTaskText = document.getElementById('editTaskInput').value;
+        currentTaskElement.querySelector('.task-text').textContent = newTaskText;
+        currentTaskElement = null; // Clear the current task element after saving
+        saveTasks(); // Save the updated tasks to localStorage
+        const modal = bootstrap.Modal.getInstance(document.getElementById('editTaskModal'));
+        modal.hide();
+    }
+}
+
+
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.className = 'task';
+                li.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} aria-label="Task completion">
+                    <span class="task-text">${task.text}</span>
+                    <div class="task-actions">
+                        <i class="bi bi-pencil" onclick="editTask(this)" aria-label="Edit Task"></i>
+                        <i class="bi bi-trash" onclick="removeTask(this)" aria-label="Remove Task"></i>
+                        <i class="bi bi-check-circle" onclick="completeTask(this)" aria-label="Complete Task"></i>
+                    </div>
+                `;
+                if (task.completed) {
+                    li.classList.add('completed');
+                }
+                document.getElementById('taskList').appendChild(li);
+            });
+        }
+    </script>
+    <!-- Edit Task Modal -->
+<!-- Edit Task Modal -->
+<div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTaskModalLabel">Edit Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="editTaskInput" class="form-control" placeholder="Edit task">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-save-changes" onclick="saveTask()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
